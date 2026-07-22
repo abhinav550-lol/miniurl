@@ -1,0 +1,175 @@
+# What is to be learnt from making this project
+
+* Docker (Containerize all services)
+* Microservices Architecture (Split the application into at least 3 independent services)
+* JWT Authentication & Authorization (Access Tokens, Refresh Tokens, Secure Token Handling)
+* API Gateway
+* Reverse Proxy (Nginx)
+* Service-to-Service Communication
+
+---
+
+# Functional Requirements
+
+### URL Shortening
+
+* Users can submit a valid long URL.
+* The system generates a unique short URL.
+* Users can optionally choose a custom alias.
+* Duplicate custom aliases are rejected.
+
+### URL Redirection
+
+* Visiting a short URL redirects users to the original URL.
+* Invalid or expired links display an appropriate error page.
+
+### User Authentication
+
+* Users can register and log in.
+* JWT-based authentication is used.
+* Refresh tokens are supported.
+* Users can only manage URLs they own.
+
+### URL Management
+
+* View all created URLs.
+* Delete URLs.
+* Edit metadata
+
+### Analytics
+
+* Track click count.
+* Track monthly click count
+* Render as a visualization 
+
+### API
+
+* RESTful APIs for all operations.
+* Swagger/OpenAPI documentation.
+
+---
+
+# Non-Functional Requirements
+
+### Architecture
+
+* Follow a Microservices Architecture.
+* Minimum **3 microservices**:
+
+  * Authentication Service
+  * URL Service
+  * Analytics Service
+
+### Containerization
+
+* Every service runs inside its own Docker container.
+* Docker Compose is used for local development.
+
+### Security
+
+* JWT authentication.
+* Password hashing using bcrypt.
+* HTTPS support.
+* Input validation and sanitization.
+* Rate limiting to prevent abuse.
+
+### Performance
+
+* URL redirection should take less than **300ms**.
+* URL shortening should take less than **500ms**.
+* Redis caching should minimize database lookups.
+
+### Scalability
+
+* Services can be scaled independently.
+* API Gateway routes requests to appropriate services.
+* Stateless services wherever possible.
+
+### Reliability
+
+* Short URLs must always be unique.
+* Database consistency must be maintained.
+* Graceful error handling.
+
+### Maintainability
+
+* Modular codebase.
+* REST API standards.
+* Proper logging.
+* Unit and integration testing.
+
+### Deployment
+
+* Deploy using Docker.
+* Environment variables for configuration.
+* Ready for cloud deployment.
+
+---
+
+# User Stories
+
+## Authentication
+
+* As a new user, I want to create an account so that I can securely manage my shortened URLs.
+* As a registered user, I want to log in so that I can access my dashboard.
+* As an authenticated user, I want to remain logged in using refresh tokens so that I don't have to log in repeatedly.
+
+## URL Shortening
+
+* As a user, I want to shorten a long URL so that it is easier to share.
+* As a user, I want to choose a custom alias so that my shortened link is easy to remember.
+* As a user, I want to receive an error if my chosen alias already exists so that I can select another one.
+
+## URL Management
+
+* As a user, I want to view all the URLs I have created so that I can manage them.
+* As a user, I want to edit the metadata of a shortened URL so that I can keep it up to date.
+* As a user, I want to delete a shortened URL so that it is no longer accessible.
+
+## URL Redirection
+
+* As a visitor, I want to be redirected instantly when I visit a valid short URL so that I reach the intended webpage.
+* As a visitor, I want to see a meaningful error page when a short URL is invalid or no longer exists.
+
+## Analytics
+
+* As a user, I want to view the total number of clicks on each shortened URL so that I can measure engagement.
+* As a user, I want to view monthly click statistics so that I can analyze traffic trends over time.
+* As a user, I want analytics to be displayed as graphs or charts so that the information is easy to understand.
+
+## Documentation
+
+* As a developer, I want access to Swagger/OpenAPI documentation so that I can easily understand and test the APIs.
+
+---
+
+# Proposed Tech Stack
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* PostgreSQL
+
+### Authentication
+
+* JWT
+* bcrypt
+
+### Microservices
+
+* REST APIs
+* API Gateway
+
+### Containers
+
+* Docker
+* Docker Compose
+
+### Documentation
+
+* Swagger/OpenAPI
+
