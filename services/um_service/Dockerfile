@@ -1,13 +1,13 @@
 FROM node:22-alpine
 
-#WORKDIR /app
+WORKDIR /app
 
-#COPY package*.json ./
+COPY package*.json ./
 
-#RUN npm install
+RUN npm install
 
-#COPY . .
+COPY . .
 
-#EXPOSE 8001
+EXPOSE 6001
 
-#CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev"]
