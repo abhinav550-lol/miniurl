@@ -5,9 +5,9 @@ services:
     restart: unless-stopped
 
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: auth_db
+      POSTGRES_USER: miniurl
+      POSTGRES_PASSWORD: miniurl123
+      POSTGRES_DB: miniurl_db
 
     ports:
       - "5432:5432"
