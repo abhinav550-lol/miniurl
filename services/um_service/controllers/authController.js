@@ -5,6 +5,11 @@ import {authService} from "../services/authService.js";
 
 const authController = {};
 
+authController.startUserRegisteration = wrapAsyncErrors(async (req, res, next) => {
+	
+});
+
+
 authController.registerUser = wrapAsyncErrors(async (req, res, next) => {
 	const {} = await authService.registerUser(req.body);
 

@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
-import { appError } from "../error/appError";
+import { appError } from "../error/appError.js";
 
-function createSignedToken(payload){
-	const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
+function createSignedToken(payload , time="0d"){
+	const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: time === "0d" ? process.env.JWT_EXPIRES_IN : time});
 	return token;
 }
 

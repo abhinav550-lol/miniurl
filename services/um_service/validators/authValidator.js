@@ -2,15 +2,32 @@ import { z } from "zod";
 
 const authValidator = {};
 
+const isStrongPassword = (password) => {
+	if(password.length < 6 || password.length > 20) {
+		return false;
+	}
+
+	if(!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+		return false;
+	}
+
+	if(password.includes(" ")) {
+		return false;
+	}
+
+	return true;
+}
+
 
 authValidator.registerUserSchema = z.object({
 	email: z.string().email("Invalid email address"),
-	password: z.string()
-		.min(6, "Password must be at least 6 characters long")
-		.max(20, "Password must be at most 20 characters long"),
+	password: z.string().refine(isStrongPassword, {
+		message: "Password must be at least 6 characters long and include an uppercase letter, a number, and a special character and should not contain spaces"
+	}),
 	confirmPassword: z.string()
-		.min(6, "Confirm password must be at least 6 characters long")
-		.max(20, "Confirm password must be at most 20 characters long"),
+		.refine(isStrongPassword, {
+			message: "Password must be at least 6 characters long and include an uppercase letter, a number, and a special character and should not contain spaces"
+		}),
 });
 
 
