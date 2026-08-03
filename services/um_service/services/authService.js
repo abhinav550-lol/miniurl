@@ -3,7 +3,7 @@ import {appError} from "../error/appError.js";
 import {decodeToken} from "../utils/jwt.js";
 import bcrypt from "bcrypt";
 import {createSignedToken} from "../utils/jwt.js";
-import {bcryptHash} from "../utils/bcrypt.js";
+import {bcryptHash , bcryptCompare} from "../utils/bcrypt.js";
 import logger from "../utils/logger.js";
 import {otpService} from "../services/otpService.js";
 class authService {
@@ -58,13 +58,12 @@ class authService {
 				}
 			});
 
+			const token = await createSignedToken({id: newUser.id, email: newUser.email} , "7d");
+
 			return {
 				success : true,
 				message : "User registered successfully.",
-				user : {
-					id : newUser.id,
-					email : newUser.email
-				}
+				userToken : token
 			}
 		} catch(error){
 			logger.error(`Error in registerUser: ${error.message}`);
@@ -73,15 +72,34 @@ class authService {
 	}
 
 	async loginUser({email , password}) {
-	
-	}
+		try{
+			const existingUser = await prisma.users.findUnique({
+				where: {
+					email: email
+				}
+			});
 
-	async logoutUser() {
+			if(!existingUser) {
+				throw new appError(400 , "User with this email does not exist.");
+			}
 
-	}
+			const isPasswordValid = await bcryptCompare(password, existingUser.password);
 
-	async getMe(userId) {
+			if(!isPasswordValid) {
+				throw new appError(400 , "Invalid email or password.");
+			}
 
+			const token = await createSignedToken({id: existingUser.id, email: existingUser.email} , "7d");
+
+			return {
+				success : true,
+				message : "User logged in successfully.",
+				userToken : token
+			};
+		} catch (error) {
+			logger.error(`Error in loginUser: ${error.message}`);
+			throw error;
+		}
 	}
 };
 
