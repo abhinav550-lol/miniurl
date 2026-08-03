@@ -7,8 +7,8 @@ const router = Router()
 
 router.post('/login'  ,authController.loginUser)
 
-router.post('/initiate-register' , validate(authValidator.registerUserSchema) , authController.startUserRegisteration);
-//router.post('/register' , validate(authValidator.registerUserSchema) , authController.registerUser);
+router.post('/initiate-register' , validate(authValidator.startUserRegistrationSchema) , authController.startUserRegistration);
+router.post('/register' , validate(authValidator.registerUserSchema) , authController.registerUser);
 
 router.get('/logout' , authController.logoutUser)
 

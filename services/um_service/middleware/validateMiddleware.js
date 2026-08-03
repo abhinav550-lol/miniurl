@@ -10,8 +10,6 @@ const validate = (schema) => {
       });
 
       req.body = validatedData.body;
-      req.params = validatedData.params;
-      req.query = validatedData.query;
 
       next();
     } catch (err) {

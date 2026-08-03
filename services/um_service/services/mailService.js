@@ -13,4 +13,6 @@ class mailService {
 }
 
 
-export { mailService };
+const mailServiceInstance = new mailService();
+
+export { mailServiceInstance as mailService };

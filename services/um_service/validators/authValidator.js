@@ -19,18 +19,25 @@ const isStrongPassword = (password) => {
 }
 
 
-authValidator.registerUserSchema = z.object({
-	email: z.string().email("Invalid email address"),
-	password: z.string().refine(isStrongPassword, {
-		message: "Password must be at least 6 characters long and include an uppercase letter, a number, and a special character and should not contain spaces"
-	}),
-	confirmPassword: z.string()
-		.refine(isStrongPassword, {
+authValidator.startUserRegistrationSchema = z.object({
+	body : z.object({
+		email: z.string().email("Invalid email address"),
+		password: z.string().refine(isStrongPassword, {
 			message: "Password must be at least 6 characters long and include an uppercase letter, a number, and a special character and should not contain spaces"
 		}),
+		confirmPassword: z.string()
+			.refine(isStrongPassword, {
+				message: "Password must be at least 6 characters long and include an uppercase letter, a number, and a special character and should not contain spaces"
+			})
+	})
 });
 
-
+authValidator.registerUserSchema = z.object({
+	body : z.object({
+	registerToken : z.string().nonempty("Register token is required"),
+	otp : z.string().length(6 , "OTP must be 6 digits long")
+	})
+});
 
 
 

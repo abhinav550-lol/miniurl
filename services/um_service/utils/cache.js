@@ -17,3 +17,7 @@ export async function getCacheData(key) {
 
   return JSON.parse(value.toString());
 }
+
+export async function deleteCacheData(key) {
+  await memClient.delete(key);
+}

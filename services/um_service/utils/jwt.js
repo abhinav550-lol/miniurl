@@ -11,7 +11,7 @@ function decodeToken(token){
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
 		return decoded;
 	} catch (error) {
-		throw new AppError(401, "Invalid authentication token.");
+		throw new AppError(401, "Invalid JWT token.");
 	}
 }
 
