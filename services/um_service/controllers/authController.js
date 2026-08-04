@@ -1,5 +1,6 @@
 import {wrapAsyncErrors} from "../error/wrapAsyncErrors.js";
 import {authService} from "../services/authService.js";
+import {appError} from "../error/appError.js";
 
 
 const authController = {};
@@ -53,6 +54,14 @@ authController.logoutUser = wrapAsyncErrors(async (req, res, next) => {
 	return res.status(200).json({
 		success: true,
 		message: "User logged out successfully."
+	});
+});
+
+authController.getUserDetails = wrapAsyncErrors(async (req, res, next) => {
+	const userDetails = await authService.getUserDetails(req.user); //isLoggedIn middleware set req.user
+	return res.status(200).json({
+		success: true,
+		data: userDetails
 	});
 });
 

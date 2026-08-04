@@ -101,6 +101,29 @@ class authService {
 			throw error;
 		}
 	}	
+
+	async getUserDetails(user) {
+		try {
+			const existingUser = await prisma.users.findUnique({
+				where: {
+					id: user.id
+				},
+				select: {
+					id: true,
+					email: true,
+				}
+			});
+
+			if(!existingUser) {
+				throw new appError(404 , "User not found.");
+			}
+
+			return existingUser;
+		} catch (error) {
+			logger.error(`Error in getUserDetails: ${error.message}`);
+			throw error;
+		}
+	}
 };
 
 const authServiceInstance = new authService();

@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "pino-http": "^11.0.0"
-  }
-}

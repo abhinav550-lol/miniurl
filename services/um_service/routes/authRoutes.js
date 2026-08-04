@@ -13,4 +13,6 @@ router.post('/register' , validate(authValidator.registerUserSchema) , authContr
 
 router.get('/logout'  , isLoggedIn , authController.logoutUser)
 
+router.get('/me' , isLoggedIn , authController.getUserDetails)
+
 export default router;
