@@ -39,6 +39,13 @@ authValidator.registerUserSchema = z.object({
 	})
 });
 
+authValidator.loginUserSchema = z.object({
+	body : z.object({
+		email: z.string().email("Invalid email address"),
+		password: z.string().nonempty("Password is required")
+	})
+});
+
 
 
 export { authValidator };

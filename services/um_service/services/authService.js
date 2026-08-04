@@ -100,7 +100,7 @@ class authService {
 			logger.error(`Error in loginUser: ${error.message}`);
 			throw error;
 		}
-	}
+	}	
 };
 
 const authServiceInstance = new authService();

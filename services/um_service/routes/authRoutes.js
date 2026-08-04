@@ -5,11 +5,11 @@ import {authValidator} from '../validators/authValidator.js'
 
 const router = Router()
 
-router.post('/login'  ,authController.loginUser)
+router.post('/login' , validate(authValidator.loginUserSchema) , authController.loginUser)
 
 router.post('/initiate-register' , validate(authValidator.startUserRegistrationSchema) , authController.startUserRegistration);
 router.post('/register' , validate(authValidator.registerUserSchema) , authController.registerUser);
 
-router.get('/logout' , authController.logoutUser)
+router.get('/logout'  , authController.logoutUser)
 
 export default router;
