@@ -1,0 +1,18 @@
+model short_urls {
+  id              String   @id @default(uuid())
+  originalUrl     String
+  shortCode       String   @unique
+  customAlias     String?  @unique
+  ownerId         String
+  isCustomAlias   Boolean  @default(false)
+  isActive        Boolean  @default(true)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([ownerId])
+  @@index([shortCode])
+
+
+  @@schema("url_generation_service")
+}
