@@ -275,11 +275,11 @@ Metadata may include:
 | ---------- | ----------------------------------------- |
 | US-1       | Create short URL (auto-generated)         | 2 
 | US-2       | Create short URL with custom alias        | 3 
-| US-3       | Validate submitted URL                    | 2a
-| US-4       | Generate globally unique short code       | 1
-| US-5       | View all user's URLs                      | 5
+| US-3       | Validate submitted URL                    | 2a 
+| US-4       | Generate globally unique short code       | 1 
+| US-5       | View all user's URLs                      | 5 
 | US-6       | View URL details                          | 4 
-| US-7       | Edit original URL                         | 7
+| US-7       | Edit original URL                         | 7 
 | US-8       | Update custom alias (optional)            | 8
 | US-9       | Delete URL                                | 6
 | US-10      | Verify ownership for protected operations | 4a

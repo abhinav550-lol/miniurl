@@ -32,8 +32,9 @@ app.get("/health" , (req , res) => {
 })
 
 //Routes
+import urlRoutes from "./routes/urlRoutes.js";
 
-
+app.use("/api/v1/urls" , urlRoutes);
 
 //Errors
 app.use(errorMiddleware);
