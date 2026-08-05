@@ -2,7 +2,7 @@ import pino from "pino";
 
 const pinoConfig = {
   base: {
-    service: "auth-service",
+    service: "url-generation-service",
   },
   transport: {
     target: "pino-pretty",

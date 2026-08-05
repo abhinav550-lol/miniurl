@@ -16,7 +16,7 @@ const validate = (schema) => {
 		if (err instanceof ZodError) {
         return res.status(400).json({
           success: false,
-          message: "Schema validation failed",
+          message: "Request data validation failed",
           errors: err.issues.map((issue) => ({
             field: issue.path.join("."),
             message: issue.message,
