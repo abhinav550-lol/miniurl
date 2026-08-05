@@ -273,17 +273,17 @@ Metadata may include:
 
 | User Story | Flow                                      |
 | ---------- | ----------------------------------------- |
-| US-1       | Create short URL (auto-generated)         |
-| US-2       | Create short URL with custom alias        |
-| US-3       | Validate submitted URL                    |
-| US-4       | Generate globally unique short code       |
-| US-5       | View all user's URLs                      |
-| US-6       | View URL details                          |
-| US-7       | Edit original URL                         |
-| US-8       | Update custom alias (optional)            |
-| US-9       | Delete URL                                |
-| US-10      | Verify ownership for protected operations |
-| US-11      | Reject duplicate aliases                  |
-| US-12      | Store and manage URL metadata             |
+| US-1       | Create short URL (auto-generated)         | 2 
+| US-2       | Create short URL with custom alias        | 3 
+| US-3       | Validate submitted URL                    | 2a
+| US-4       | Generate globally unique short code       | 1
+| US-5       | View all user's URLs                      | 5
+| US-6       | View URL details                          | 4 
+| US-7       | Edit original URL                         | 7
+| US-8       | Update custom alias (optional)            | 8
+| US-9       | Delete URL                                | 6
+| US-10      | Verify ownership for protected operations | 4a
+| US-11      | Reject duplicate aliases                  | 3a
+| US-12      | Store and manage URL metadata             | 2b
 
 These user stories fully cover the responsibilities of the URL Generation Service while explicitly excluding authentication, redirection, and analytics, which belong to other services.

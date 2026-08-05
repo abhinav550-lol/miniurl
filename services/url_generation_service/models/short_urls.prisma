@@ -12,7 +12,7 @@ model short_urls {
 
   @@index([ownerId])
   @@index([shortCode])
-
+  @@index([customAlias])
 
   @@schema("url_generation_service")
 }
