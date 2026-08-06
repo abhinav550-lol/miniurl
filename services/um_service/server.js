@@ -42,6 +42,8 @@ app.use("/api/v1/auth" , authRoutes);
 app.use(errorMiddleware);
 
 
+
+
 const PORT = process.env.PORT || 6001;
 app.listen(PORT , () => {
 	logger.info(`User Management Service is running on port ${PORT}`);

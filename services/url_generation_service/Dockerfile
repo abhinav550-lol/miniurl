@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npx prisma generate --schema=models
+
 EXPOSE 6002
 
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "npx prisma db push --schema=models && npm start"]

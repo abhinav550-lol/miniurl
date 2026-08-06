@@ -7,7 +7,6 @@ import pinoHttp from "pino-http"
 import logger from "./utils/logger.js";
 import {appError} from "./error/appError.js";	
 import errorMiddleware from "./middleware/errorMiddleware.js";
-
 dotenv.config();
 const app = express();
 

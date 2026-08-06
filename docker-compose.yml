@@ -5,9 +5,9 @@ services:
     restart: unless-stopped
 
     environment:
-      POSTGRES_USER: miniurl
-      POSTGRES_PASSWORD: miniurl123
-      POSTGRES_DB: miniurl_db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
 
     ports:
       - "5432:5432"
@@ -37,7 +37,7 @@ services:
       dockerfile: Dockerfile
     env_file:
       - ./.env
-      - ./services/um_service/.env
+      - ./services/um_service/.env.prod
     ports:
     - "6001:6001"  
   url_generation_service:
@@ -46,7 +46,7 @@ services:
       dockerfile: Dockerfile
     env_file:
       - ./.env
-      - ./services/url_generation_service/.env
+      - ./services/url_generation_service/.env.prod
     ports:
     - "6002:6002"
 
