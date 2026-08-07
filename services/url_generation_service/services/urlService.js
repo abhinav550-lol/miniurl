@@ -214,17 +214,20 @@ class urlService {
 				throw new appError(404 , "Short URL not found for this user");
 			}
 
-			const deletedURL = await prisma.short_urls.delete({
+			const unactiveURL = await prisma.short_urls.update({
 				where: {
 					shortCode,
 					userId
+				},
+				data: {
+					isActive: false
 				}
 			});
 
 			return {
 				success : true,
 				message : "Short URL deleted successfully",
-				data : deletedURL
+				data : unactiveURL
 			}
 		} catch(err){
 			logger.error(`Error in deleteShortURL: ${err.message}`);

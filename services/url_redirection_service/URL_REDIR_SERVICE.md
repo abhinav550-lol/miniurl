@@ -236,3 +236,26 @@
 | **US-RED-012** | Aggregate click data into yearly analytics for long-term reporting.                            | 2c
 | **US-RED-013** | Store timestamps for every click to enable accurate analytics.                                 | 2d
 | **US-RED-014** | Continue redirecting URLs by falling back to the database if the cache is unavailable.         | 1d
+
+Client
+   │
+   ▼
+Redirect Service
+   │
+   ├── Redirect immediately
+   │
+   └── Publish click event
+           │
+           ▼
+        RabbitMQ
+           │
+           ▼
+    Analytics Worker
+           │
+           ├── Insert click_event
+           │
+           └── Upsert monthly_analytics
+
+
+
+Also, have to rate limit redirects

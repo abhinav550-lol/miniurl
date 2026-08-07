@@ -32,6 +32,11 @@ app.get("/health" , (req , res) => {
 
 //Routes
 
+import analyticsRoutes from "./routes/analyticsRoutes.js";
+import redirectionRoutes from "./routes/redirectionRoutes.js";
+
+app.use("/api/v1/analytics" , analyticsRoutes);
+app.use("/api/v1/redirect" , redirectionRoutes);
 
 //Errors
 app.use(errorMiddleware);

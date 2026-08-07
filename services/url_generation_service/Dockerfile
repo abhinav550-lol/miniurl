@@ -10,6 +10,6 @@ COPY . .
 
 RUN npx prisma generate --schema=models
 
-EXPOSE 6002
+EXPOSE 60023
 
 CMD ["sh", "-c", "npx prisma db push --schema=models && npm start"]
